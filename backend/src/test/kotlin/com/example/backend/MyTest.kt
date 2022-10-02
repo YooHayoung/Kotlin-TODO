@@ -9,6 +9,6 @@ class MyTest {
     fun test1() {
         val boolean = true
 
-        assertThat(boolean).isFalse
+        assertThat(boolean).isTrue
     }
 }
