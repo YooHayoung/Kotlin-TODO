@@ -60,6 +60,6 @@ tasks.withType<Test> {
 
 task("printVersion") {
     doLast {
-        println("$version")
+        println("version:$version")
     }
 }
