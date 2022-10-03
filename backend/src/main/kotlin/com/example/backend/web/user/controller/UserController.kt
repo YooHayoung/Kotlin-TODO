@@ -5,6 +5,7 @@ import com.example.backend.web.common.ApiResponse
 import com.example.backend.web.user.request.UserSaveRequest
 import com.example.backend.web.user.response.UserSaveResponse
 import org.slf4j.LoggerFactory
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -24,5 +25,11 @@ class UserController(val userService: UserService) {
         log.info("start ${object{}.javaClass.enclosingMethod.name} start!")
         val savedUserId = userService.saveUser(request.toServiceDto())
         return ApiResponse.createSuccess(UserSaveResponse(savedUserId))
+    }
+
+    @GetMapping
+    fun userList(): ApiResponse<List<UserDetailResponse>> {
+        val userDetailResponses = userService.getUserList().map { user -> UserDetailResponse(user) }
+        return ApiResponse.createSuccess(userDetailResponses)
     }
 }
