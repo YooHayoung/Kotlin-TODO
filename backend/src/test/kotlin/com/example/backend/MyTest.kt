@@ -10,5 +10,7 @@ class MyTest {
         val boolean = true
 
         assertThat(boolean).isTrue
+
+        // test
     }
 }
